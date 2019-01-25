@@ -1,33 +1,36 @@
 #include "push_swap.h"
 
-static void			push_swap_get_output(int **tab_a, int **tab_b, t_size *size, char *str)
+static void			push_swap_get_output(int **tab_a, int **tab_b, t_size *size, char c)
 {
 	char		*line;
 
 	while (get_next_line(0, &line) > 0)
 	{
+		ft_putstr("gnl : ");
+		ft_putstr(line);
+		ft_putchar('\n');
 		if (!ft_strcmp(line, "sa"))
-			sa(tab_a, size, str);
+			sa(tab_a, size, c);
 		else if (!ft_strcmp(line, "sb"))
-			sb(tab_b, size, str);
+			sb(tab_b, size, c);
 		else if (!ft_strcmp(line, "ss"))
-			ss(tab_a, tab_b, size, str);
+			ss(tab_a, tab_b, size, c);
 		else if (!ft_strcmp(line, "pa"))
-			pa(tab_a, tab_b, size, str);
+			pa(tab_a, tab_b, size, c);
 		else if (!ft_strcmp(line, "pb"))
-			pb(tab_a, tab_b, size, str);
+			pb(tab_a, tab_b, size, c);
 		else if (!ft_strcmp(line, "ra"))
-			ra(tab_a, size, str);
+			ra(tab_a, size, c);
 		else if (!ft_strcmp(line, "rb"))
-			rb(tab_b, size, str);
+			rb(tab_b, size, c);
 		else if (!ft_strcmp(line, "rr"))
-			rr(tab_a, tab_b, size, str);
+			rr(tab_a, tab_b, size, c);
 		else if (!ft_strcmp(line, "rra"))
-			rra(tab_a, size, str);
+			rra(tab_a, size, c);
 		else if (!ft_strcmp(line, "rrb"))
-			rrb(tab_b, size, str);
+			rrb(tab_b, size, c);
 		else if (!ft_strcmp(line, "rrr"))
-			rrr(tab_a, tab_b, size, str);
+			rrr(tab_a, tab_b, size, c);
 		free(line);
 	}
 	free(line);
@@ -43,6 +46,10 @@ int					main(int argc, char **argv)
 	t_size		size;
 
 	// checking arg
+	ft_putstr(argv[0]);
+	ft_putchar('\n');
+	ft_putstr(argv[1]);
+	ft_putchar('\n');
 	if (argc < 2)
 	{
 		ft_putstr("Error\n");
@@ -100,7 +107,7 @@ int					main(int argc, char **argv)
 	size.moves = 0;
 	// get output from push_swap and making instructions
 	// last parameter is a string, if the string == "mute" that wouldn't show the moves
-	push_swap_get_output(&tab_a, &tab_b, &size, "mute");
+	push_swap_get_output(&tab_a, &tab_b, &size, 'm');
 	// checking if tab is sorted
 	if (tab_sorted(&tab_a, &size) != 0)
 		ft_putstr("OK :D\n");

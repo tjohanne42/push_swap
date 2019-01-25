@@ -45,13 +45,13 @@ rrr : rra et rrb en même temps.
 */
 
 
-void		sa(int **tab_a, t_size *size, char *str)
+void		sa(int **tab_a, t_size *size, char c)
 {
 	int		temp;
 
 	if (size->a > 1)
 	{
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("sa\n");
 		temp = tab_a[0][0];
 		tab_a[0][0] = tab_a[0][1];
@@ -60,13 +60,13 @@ void		sa(int **tab_a, t_size *size, char *str)
 	}
 }
 
-void		sb(int **tab_b, t_size *size, char *str)
+void		sb(int **tab_b, t_size *size, char c)
 {
 	int		temp;
 
 	if (size->b > 1)
 	{
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("sb\n");
 		temp = tab_b[0][0];
 		tab_b[0][0] = tab_b[0][1];
@@ -75,11 +75,11 @@ void		sb(int **tab_b, t_size *size, char *str)
 	}
 }
 
-void		ss(int **tab_a, int **tab_b, t_size *size, char *str)
+void		ss(int **tab_a, int **tab_b, t_size *size, char c)
 {
-	sa(tab_a, size, "mute");
-	sb(tab_b, size, "mute");
-	if (ft_strcmp(str, "mute") != 0)
+	sa(tab_a, size, 'm');
+	sb(tab_b, size, 'm');
+	if (c != 'm')
 	{
 		if (size->a > 1 && size->b <= 1)
 			ft_putstr("sa\n");
@@ -93,13 +93,13 @@ void		ss(int **tab_a, int **tab_b, t_size *size, char *str)
 	}
 }
 
-void		pa(int **tab_a, int **tab_b, t_size *size, char *str)
+void		pa(int **tab_a, int **tab_b, t_size *size, char c)
 {
 	size_t	i;
 
 	if (size->b > 0)
 	{
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("pa\n");
 		i = size->a;
 		while (i != 0)
@@ -120,13 +120,13 @@ void		pa(int **tab_a, int **tab_b, t_size *size, char *str)
 	}
 }
 
-void		pb(int **tab_a, int **tab_b, t_size *size, char *str)
+void		pb(int **tab_a, int **tab_b, t_size *size, char c)
 {
 	size_t	i;
 
 	if (size->a > 0)
 	{
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("pb\n");
 		i = size->b;
 		while (i != 0)
@@ -147,7 +147,7 @@ void		pb(int **tab_a, int **tab_b, t_size *size, char *str)
 	}
 }
 
-void		ra(int **tab_a, t_size *size, char *str)
+void		ra(int **tab_a, t_size *size, char c)
 {
 	int		temp;
 	size_t	i;
@@ -162,13 +162,13 @@ void		ra(int **tab_a, t_size *size, char *str)
 			i++;
 		}
 		tab_a[0][size->a - 1] = temp;
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("ra\n");
 		size->moves++;
 	}
 }
 
-void		rb(int **tab_b, t_size *size, char *str)
+void		rb(int **tab_b, t_size *size, char c)
 {
 	int		temp;
 	size_t	i;
@@ -183,17 +183,17 @@ void		rb(int **tab_b, t_size *size, char *str)
 			i++;
 		}
 		tab_b[0][size->b - 1] = temp;
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("rb\n");
 		size->moves++;
 	}
 }
 
-void		rr(int **tab_a, int **tab_b, t_size *size, char *str)
+void		rr(int **tab_a, int **tab_b, t_size *size, char c)
 {
-	ra(tab_a, size, "mute");
-	rb(tab_b, size, "mute");
-	if (ft_strcmp(str, "mute") != 0)
+	ra(tab_a, size, 'm');
+	rb(tab_b, size, 'm');
+	if (c != 'm')
 	{
 		if (size->a > 1 && size->b <= 1)
 			ft_putstr("ra\n");
@@ -207,7 +207,7 @@ void		rr(int **tab_a, int **tab_b, t_size *size, char *str)
 	}
 }
 
-void		rra(int **tab_a, t_size *size, char *str)
+void		rra(int **tab_a, t_size *size, char c)
 {
 	int		temp;
 	size_t	i;
@@ -222,13 +222,13 @@ void		rra(int **tab_a, t_size *size, char *str)
 			i--;
 		}
 		tab_a[0][0] = temp;
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("rra\n");
 		size->moves++;
 	}
 }
 
-void		rrb(int **tab_b, t_size *size, char *str)
+void		rrb(int **tab_b, t_size *size, char c)
 {
 	int		temp;
 	size_t	i;
@@ -243,17 +243,17 @@ void		rrb(int **tab_b, t_size *size, char *str)
 			i--;
 		}
 		tab_b[0][0] = temp;
-		if (ft_strcmp(str, "mute") != 0)
+		if (c != 'm')
 			ft_putstr("rrb\n");
 		size->moves++;
 	}
 }
 
-void		rrr(int **tab_a, int **tab_b, t_size *size, char *str)
+void		rrr(int **tab_a, int **tab_b, t_size *size, char c)
 {
-	rra(tab_a, size, "mute");
-	rrb(tab_b, size, "mute");
-	if (ft_strcmp(str, "mute") != 0)
+	rra(tab_a, size, 'm');
+	rrb(tab_b, size, 'm');
+	if (c != 'm')
 	{
 		if (size->a > 1 && size->b <= 1)
 			ft_putstr("rra");
@@ -266,4 +266,3 @@ void		rrr(int **tab_a, int **tab_b, t_size *size, char *str)
 		}
 	}
 }
-

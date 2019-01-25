@@ -21,16 +21,16 @@ size_t		check_nb(int argc, char **argv);
 void		push_swap_algo(int **tab_a, int **tab_b, t_size *size);
 
 // operations
-void		sa(int **tab_a, t_size *size, char *str);
-void		sb(int **tab_b, t_size *size, char *str);
-void		ss(int **tab_a, int **tab_2, t_size *size, char *str);
-void		pa(int **tab_a, int **tab_b, t_size *size, char *str);
-void		pb(int **tab_a, int **tab_b, t_size *size, char *str);
-void		ra(int **tab_a, t_size *size, char *str);
-void		rb(int **tab_b, t_size *size, char *str);
-void		rr(int **tab_a, int **tab_b, t_size *size, char *str);
-void		rra(int **tab_a, t_size *size, char *str);
-void		rrb(int **tab_b, t_size *size, char *str);
-void		rrr(int **tab_a, int **tab_b, t_size *size, char *str);
+void		sa(int **tab_a, t_size *size, char c);
+void		sb(int **tab_b, t_size *size, char c);
+void		ss(int **tab_a, int **tab_2, t_size *size, char c);
+void		pa(int **tab_a, int **tab_b, t_size *size, char c);
+void		pb(int **tab_a, int **tab_b, t_size *size, char c);
+void		ra(int **tab_a, t_size *size, char c);
+void		rb(int **tab_b, t_size *size, char c);
+void		rr(int **tab_a, int **tab_b, t_size *size, char c);
+void		rra(int **tab_a, t_size *size, char c);
+void		rrb(int **tab_b, t_size *size, char c);
+void		rrr(int **tab_a, int **tab_b, t_size *size, char c);
 
 #endif
