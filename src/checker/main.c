@@ -6,9 +6,6 @@ static void			push_swap_get_output(int **tab_a, int **tab_b, t_size *size, char 
 
 	while (get_next_line(0, &line) > 0)
 	{
-		ft_putstr("gnl : ");
-		ft_putstr(line);
-		ft_putchar('\n');
 		if (!ft_strcmp(line, "sa"))
 			sa(tab_a, size, c);
 		else if (!ft_strcmp(line, "sb"))
@@ -46,10 +43,6 @@ int					main(int argc, char **argv)
 	t_size		size;
 
 	// checking arg
-	ft_putstr(argv[0]);
-	ft_putchar('\n');
-	ft_putstr(argv[1]);
-	ft_putchar('\n');
 	if (argc < 2)
 	{
 		ft_putstr("Error\n");
