@@ -2,7 +2,7 @@
 #include "time.h"
 #include <stdio.h>
 
-#define NOMBRE_MAX 80
+#define NOMBRE_MAX 50
 
 int			rand_a_b(int a, int b)
 {
@@ -23,6 +23,8 @@ int			*generation_nombre(void)
 	while (i < NOMBRE_MAX)
 	{
 		tab[i] = i + 1;
+		if (rand() % 2 == 0)
+			tab[i] *= -1;
 		i++;
 	}
 	i = 0;

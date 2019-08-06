@@ -26,7 +26,7 @@ SRC =	ft_atoi.c       ft_memcmp.c     ft_putstr.c     ft_striteri.c   ft_strnstr
 		ft_memccpy.c    ft_putnbr.c     ft_strequ.c     ft_strnequ.c	ft_lstdel.c \
 		ft_memchr.c     ft_putnbr_fd.c  ft_striter.c    ft_strnew.c 	ft_lstnew.c \
 		ft_lstadd.c		ft_lstiter.c	ft_lstmap.c		ft_power.c		ft_sqrt.c \
-		ft_strnjoin.c	ft_nbrlen.c		ft_itoa_base.c
+		ft_strnjoin.c	ft_nbrlen.c		ft_itoa_base.c	ft_atoimax.c
 
 OBJ =	ft_atoi.o       ft_memcmp.o     ft_putstr.o     ft_striteri.o   ft_strnstr.o \
 		ft_bzero.o      ft_memcpy.o     ft_putstr_fd.o  ft_strjoin.o    ft_strrchr.o \
@@ -40,7 +40,7 @@ OBJ =	ft_atoi.o       ft_memcmp.o     ft_putstr.o     ft_striteri.o   ft_strnstr
 		ft_memccpy.o    ft_putnbr.o     ft_strequ.o     ft_strnequ.o	ft_lstdel.o\
 		ft_memchr.o     ft_putnbr_fd.o  ft_striter.o    ft_strnew.o 	ft_lstnew.o \
 		ft_lstadd.o		ft_lstiter.o	ft_lstmap.o		ft_power.o		ft_sqrt.o \
-		ft_strnjoin.o	ft_nbrlen.o		ft_itoa_base.o
+		ft_strnjoin.o	ft_nbrlen.o		ft_itoa_base.o	ft_atoimax.o
 
 all: $(NAME)
 

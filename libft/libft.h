@@ -26,6 +26,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+intmax_t			ft_atoimax(const char *nptr);
+
 void				*ft_memset(void *s, int c, size_t n);
 
 void				ft_bzero(void *s, size_t n);

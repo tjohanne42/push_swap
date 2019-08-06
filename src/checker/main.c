@@ -1,115 +1,123 @@
 #include "push_swap.h"
 
-static void			push_swap_get_output(int **tab_a, int **tab_b, t_size *size, char c)
+static size_t	read_instruction(t_size *size, size_t v)
 {
 	char		*line;
+	size_t		b;
 
+	b = 0;
+	line = NULL;
+	if (v == 1)
+		visio(size, 0);
 	while (get_next_line(0, &line) > 0)
 	{
 		if (!ft_strcmp(line, "sa"))
-			sa(tab_a, size, c);
+			sa(size);
 		else if (!ft_strcmp(line, "sb"))
-			sb(tab_b, size, c);
+			sb(size);
 		else if (!ft_strcmp(line, "ss"))
-			ss(tab_a, tab_b, size, c);
+			ss(size);
 		else if (!ft_strcmp(line, "pa"))
-			pa(tab_a, tab_b, size, c);
+			pa(size);
 		else if (!ft_strcmp(line, "pb"))
-			pb(tab_a, tab_b, size, c);
+			pb(size);
 		else if (!ft_strcmp(line, "ra"))
-			ra(tab_a, size, c);
+			ra(size);
 		else if (!ft_strcmp(line, "rb"))
-			rb(tab_b, size, c);
+			rb(size);
 		else if (!ft_strcmp(line, "rr"))
-			rr(tab_a, tab_b, size, c);
+			rr(size);
 		else if (!ft_strcmp(line, "rra"))
-			rra(tab_a, size, c);
+			rra(size);
 		else if (!ft_strcmp(line, "rrb"))
-			rrb(tab_b, size, c);
+			rrb(size);
 		else if (!ft_strcmp(line, "rrr"))
-			rrr(tab_a, tab_b, size, c);
+			rrr(size);
+		else
+		{
+			free(line);
+			return (0);
+		}
 		free(line);
+		if (v == 1)
+			visio(size, b);
+		if (!b)
+			b++;
+		if (algo_completed(size) == 1)
+			return (1);
 	}
 	free(line);
-	
+	return (1);
 }
 
-int					main(int argc, char **argv)
+static size_t	find_v(int argc, char **argv)
 {
-	int			i;
-	int			*tab_a;
-	int			*tab_b;
-	intmax_t	temp;
-	t_size		size;
+	size_t	i;
+	size_t	z;
+	size_t	len;
+	size_t	ret;
 
-	// checking arg
+	i = 1;
+	ret = 0;
+	while ((int)i < argc)
+	{
+		len = ft_strlen(argv[i]);
+		if (len > 1)
+		{
+			z = 0;
+			while (z < len - 1)
+			{
+				if (argv[i][z] == '-' && argv[i][z + 1] == 'v')
+				{
+					if (argv[i][z + 2] != '\0')
+					{
+						argv[i][z++] = ' ';
+						argv[i][z] = ' ';
+					}
+					else
+					{
+						z = len - 2;
+						argv[i][z] = '\0';
+					}
+					ret = 1;
+				}
+				z++;
+			}
+		}
+		i++;
+	}
+	return (ret);
+}
+
+int		main(int argc, char **argv)
+{
+	t_size	*size;
+	size_t	v;
+
 	if (argc < 2)
 	{
 		ft_putstr("Error\n");
 		return (0);
 	}
-	if (!check_nb(argc, argv))
+	size = NULL;
+	v = find_v(argc, argv);
+	if (!(size = check_arg(argc, argv)))
 	{
 		ft_putstr("Error\n");
 		return (0);
 	}
-	// creating tab_a
-	if (!(tab_a = malloc(sizeof(*tab_a) * (argc - 1))))
+	if (read_instruction(size, v))
 	{
-		ft_putstr("Error\n");
-		return (0);
+		if (algo_completed(size) == 1)
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
 	}
-	i = 1;
-	// put nb from argv to tab_a
-	while (i < argc)
-	{
-		// looking for the value to be in a int
-		temp = ft_atoimax(argv[i]);
-		if (temp > INT_MAX)
-		{
-			free(tab_a);
-			ft_putstr("Error\n");
-			return (0);
-		}
-		else if (temp < INT_MIN)
-		{
-			free(tab_a);
-			ft_putstr("Error\n");
-			return (0);
-		}
-		tab_a[i - 1] = ft_atoi(argv[i]);
-		i++;
-	}
-	// checking double
-	if (!check_double(tab_a, argc))
-	{
-		free(tab_a);
-		ft_putstr("Error\n");
-		return (0);
-	}
-	// creating tab_b
-	if (!(tab_b = malloc(sizeof(*tab_b) * (argc - 1))))
-	{
-		free(tab_a);
-		ft_putstr("Error\n");
-		return (0);
-	}
-	// initializing t_size size value
-	size.a = argc - 1;
-	size.b = 0;
-	size.moves = 0;
-	// get output from push_swap and making instructions
-	// last parameter is a string, if the string == "mute" that wouldn't show the moves
-	push_swap_get_output(&tab_a, &tab_b, &size, 'm');
-	// checking if tab is sorted
-	if (tab_sorted(&tab_a, &size) != 0)
-		ft_putstr("OK :D\n");
 	else
-		ft_putstr("KO D:\n");
-	ft_putstr("size.moves = ");
-	ft_putnbr(size.moves);
-	ft_putchar('\n');
-	free(tab_a);
-	free(tab_b);
+		ft_putstr("Error\n");
+	free(size->ops);
+	free(size->tab_a);
+	free(size->tab_b);
+	free(size);
 	return (0);
 }
